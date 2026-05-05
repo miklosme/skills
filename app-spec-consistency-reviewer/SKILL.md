@@ -1,5 +1,5 @@
 ---
-name: spec-consistency-reviewer
+name: app-spec-consistency-reviewer
 description: Review an app specification set for conflicts, drift, missing traceability, misplaced decisions, stage-boundary violations, or implementation-readiness gaps. Use when the user asks to audit, reconcile, harden, validate, or review specification artifacts without necessarily creating a new artifact.
 ---
 
@@ -35,7 +35,7 @@ If the target is ambiguous and a broad review would be expensive or noisy, ask o
 ## Grounding Order
 
 1. Read the specification profile, if present.
-2. Read `app-specification-guide` for stage authority and artifact boundaries when needed.
+2. Read `app-spec-guide` for stage authority and artifact boundaries when needed.
 3. Inspect relevant stage indexes.
 4. Inspect targeted artifacts.
 5. Inspect upstream artifacts that should govern the target.

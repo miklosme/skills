@@ -1,5 +1,5 @@
 ---
-name: user-flow-spec-orchestrator
+name: app-spec-user-flow-orchestrator
 description: Create or materially update User Flow Specs using indexed specification artifacts, discovery material, prototype evidence, bounded autonomous decision-making, screenshots, and final review. Use when the user asks to create, update, harden, or orchestrate a user flow spec.
 ---
 
@@ -14,7 +14,7 @@ Read the first specification profile that exists:
 1. `docs/SPECIFICATION_PROFILE.md`
 2. `docs/spec-system/PROJECT_PROFILE.md`
 
-Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, and role names. If no profile exists, use the defaults in `app-specification-guide`.
+Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, and role names. If no profile exists, use the defaults in `app-spec-guide`.
 
 ## Resolve the Target Flow
 
@@ -73,7 +73,7 @@ For new or materially updated User Flow Specs, use browser exploration when a pr
 
 If browser evidence is required and the profile says the user owns the server, check reachability first. If unreachable, ask the user to start or fix the server and do not finalize browser-dependent observations.
 
-When the user or current instructions explicitly permit subagent delegation, launch one `prototype_browser_explorer` subagent with a narrow brief. Otherwise, perform the same work locally while keeping raw browser or code output out of the final spec.
+When the user or current instructions explicitly permit subagent delegation, launch one `app_spec_prototype_browser_explorer` subagent with a narrow brief. Otherwise, perform the same work locally while keeping raw browser or code output out of the final spec.
 
 The explorer brief should include:
 
@@ -184,7 +184,7 @@ Use the ledger to draft the spec, but do not paste it into the spec.
 
 ## Drafting Rules
 
-Use the User Flow Spec template from `app-specification-guide`.
+Use the User Flow Spec template from `app-spec-guide`.
 
 Keep the spec flow-centered, outcome-grounded, and user-visible. Do not turn it into a technical design, ticket list, generic PRD, or copied discovery notes.
 

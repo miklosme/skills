@@ -1,5 +1,5 @@
 ---
-name: domain-model-orchestrator
+name: app-spec-domain-model-orchestrator
 description: Create or materially update Domain and State Model artifacts from user flows, discovery material, prototype evidence, and product decisions. Use when the user asks for domain modeling, shared glossary, state machines, permissions, audit events, implementation-readiness context, centralized open decisions, or cross-flow product contracts.
 ---
 
@@ -18,7 +18,7 @@ Read the first specification profile that exists:
 1. `docs/SPECIFICATION_PROFILE.md`
 2. `docs/spec-system/PROJECT_PROFILE.md`
 
-Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, role names, and source-priority notes. If no profile exists, use the defaults in `app-specification-guide`.
+Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, role names, and source-priority notes. If no profile exists, use the defaults in `app-spec-guide`.
 
 ## Resolve the Target Scope
 

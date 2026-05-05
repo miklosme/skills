@@ -1,5 +1,5 @@
 ---
-name: app-specification-guide
+name: app-spec-guide
 description: Use when a user asks about an app specification system, implementation-readiness specs, user-flow hardening, domain modeling, UI language, screen and route specs, technical design, component design, feature design, implementation slices, or what specification stage should come before or after another stage.
 ---
 
@@ -8,6 +8,8 @@ description: Use when a user asks about an app specification system, implementat
 This skill explains a reusable specification system for turning noisy discovery material, prototypes, and user clarifications into implementation-ready product context.
 
 It is a context skill, not an autonomous orchestrator. Follow the user's requested scope and use a stage-specific skill when one exists.
+
+When starting a specification effort from scratch, use `app-spec-bootstrapper` before stage-specific authoring skills.
 
 ## Specification Profile
 
@@ -73,11 +75,23 @@ Index links are planning contracts:
 
 ## Specification Stages
 
+### 0. Bootstrap
+
+Default files:
+
+- `docs/SPECIFICATION_PROFILE.md`
+- `docs/user-flows/00_INDEX.md`
+- optionally `docs/domain-model/00_INDEX.md`
+
+Created or materially updated by `app-spec-bootstrapper`.
+
+Bootstrap establishes project-specific facts, source priority, prototype evidence settings, initial flow candidates, and open setup questions. It should not create full stage artifacts unless the user explicitly asks.
+
 ### 1. User Flow Specs
 
 Default folder: `docs/user-flows/`
 
-Created or materially updated by `user-flow-spec-orchestrator`.
+Created or materially updated by `app-spec-user-flow-orchestrator`.
 
 User Flow Specs describe meaningful work from the user's perspective. They are flow-centered, outcome-grounded, and pair user actions with system responses.
 
@@ -123,7 +137,7 @@ Do not add default `Sources` or `Discovery Notes` sections. Discovery material i
 
 Default folder: `docs/domain-model/`
 
-Created or materially updated by `domain-model-orchestrator`.
+Created or materially updated by `app-spec-domain-model-orchestrator`.
 
 The Domain and State Model turns user flows into shared product contracts for implementation agents: glossary, product objects, state machines, actions and side effects, roles and permissions, invariants, source-of-truth rules, audit events, open decisions, and flow traceability.
 

@@ -1,4 +1,4 @@
-name = "prototype_browser_explorer"
+name = "app_spec_prototype_browser_explorer"
 description = "Use when a parent agent needs focused static prototype reconnaissance plus Playwright CLI browser exploration, screenshots, reproduction, or manual UI testing without pulling raw code/browser output into the parent context."
 model_reasoning_effort = "medium"
 sandbox_mode = "workspace-write"
