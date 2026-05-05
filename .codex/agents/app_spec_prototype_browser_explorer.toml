@@ -18,10 +18,7 @@ Optimize for precision over compactness when reporting behaviorally meaningful d
 
 ## Specification Profile
 
-Read the first specification profile that exists:
-
-1. `docs/SPECIFICATION_PROFILE.md`
-2. `docs/spec-system/PROJECT_PROFILE.md`
+Read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
 
 Use the profile for prototype URL, server policy, screenshot directory, relevant spec roots, and project-specific terminology. If the parent gives a different URL, screenshot directory, or cwd, prefer the parent brief for this task.
 

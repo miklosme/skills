@@ -11,10 +11,7 @@ This is a reviewer skill, not an authoring orchestrator. Lead with findings and 
 
 ## Specification Profile
 
-Read the first specification profile that exists:
-
-1. `docs/SPECIFICATION_PROFILE.md`
-2. `docs/spec-system/PROJECT_PROFILE.md`
+Read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
 
 Use the profile for product name, spec roots, discovery inputs, prototype URL, domain-specific terminology, role names, and source-priority notes.
 

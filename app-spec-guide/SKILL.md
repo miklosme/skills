@@ -13,10 +13,7 @@ When starting a specification effort from scratch, use `app-spec-bootstrapper` b
 
 ## Specification Profile
 
-For repo-specific facts, read the first specification profile that exists:
-
-1. `docs/SPECIFICATION_PROFILE.md`
-2. `docs/spec-system/PROJECT_PROFILE.md`
+For repo-specific facts, Read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
 
 The specification profile may define the product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, role names, and source-priority notes.
 
@@ -47,14 +44,14 @@ The loop is:
 
 ## Artifact Conventions
 
-Each specification stage usually has its own folder under `docs/`.
+Each specification stage usually has its own folder under `specs/`.
 
 Each artifact filename is prefixed with a double-digit index:
 
 ```text
-docs/<stage>/00_INDEX.md
-docs/<stage>/01_FIRST_ARTIFACT.md
-docs/<stage>/02_SECOND_ARTIFACT.md
+specs/<stage>/00_INDEX.md
+specs/<stage>/01_FIRST_ARTIFACT.md
+specs/<stage>/02_SECOND_ARTIFACT.md
 ```
 
 Every stage folder needs a `00_`-prefixed index file, usually `00_INDEX.md`.
@@ -79,9 +76,9 @@ Index links are planning contracts:
 
 Default files:
 
-- `docs/SPECIFICATION_PROFILE.md`
-- `docs/user-flows/00_INDEX.md`
-- optionally `docs/domain-model/00_INDEX.md`
+- `specs/SPECIFICATION_PROFILE.md`
+- `specs/user-flows/00_INDEX.md`
+- optionally `specs/domain-model/00_INDEX.md`
 
 Created or materially updated by `app-spec-bootstrapper`.
 
@@ -89,7 +86,7 @@ Bootstrap establishes project-specific facts, source priority, prototype evidenc
 
 ### 1. User Flow Specs
 
-Default folder: `docs/user-flows/`
+Default folder: `specs/user-flows/`
 
 Created or materially updated by `app-spec-user-flow-orchestrator`.
 
@@ -135,7 +132,7 @@ Do not add default `Sources` or `Discovery Notes` sections. Discovery material i
 
 ### 2. Domain and State Model
 
-Default folder: `docs/domain-model/`
+Default folder: `specs/domain-model/`
 
 Created or materially updated by `app-spec-domain-model-orchestrator`.
 
@@ -145,7 +142,7 @@ Use it as the canonical source for cross-flow product behavior once it exists.
 
 ### 3. UI Language and Interaction System
 
-Suggested folder: `docs/ui-language/`
+Suggested folder: `specs/ui-language/`
 
 This stage defines how the app should look, feel, and behave. It is not decoration; it is implementation context.
 
@@ -164,7 +161,7 @@ Expected coverage:
 
 ### 4. Screen and Route Specs
 
-Suggested folder: `docs/screens-and-routes/`
+Suggested folder: `specs/screens-and-routes/`
 
 Screen and Route Specs translate flows, domain contracts, and UI language into implementable app surfaces.
 
@@ -184,7 +181,7 @@ Expected coverage:
 
 ### 5. Feature and Capability Design
 
-Suggested folder: `docs/feature-design/`
+Suggested folder: `specs/feature-design/`
 
 Feature Design is useful for cross-cutting capabilities larger than one screen but narrower than the whole app.
 
@@ -203,7 +200,7 @@ Use this stage sparingly. Prefer User Flow Specs for workflow behavior, Domain a
 
 ### 6. Technical Design
 
-Suggested folder: `docs/technical-design/`
+Suggested folder: `specs/technical-design/`
 
 Technical Design explains how implementation should satisfy product, domain, UI, and screen contracts.
 
@@ -224,7 +221,7 @@ Technical Design should consume earlier specs. It should not silently redefine p
 
 ### 7. Component Design
 
-Suggested folder: `docs/component-design/`
+Suggested folder: `specs/component-design/`
 
 Component Design is useful when repeated UI patterns need precise implementation guidance. It should come after UI Language and at least the relevant Screen and Route Specs.
 
@@ -242,7 +239,7 @@ Avoid component design for one-off screens unless the user explicitly asks for i
 
 ### 8. Implementation Slices
 
-Suggested folder: `docs/implementation-slices/`
+Suggested folder: `specs/implementation-slices/`
 
 Implementation slices are vertical build plans for coding agents. They group the minimum product, UI, domain, and technical context needed to implement and test one meaningful increment.
 

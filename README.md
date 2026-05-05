@@ -15,4 +15,4 @@ A collection of agent skills that extend capabilities across planning, developme
 
 - `.codex/agents/app_spec_prototype_browser_explorer.toml`: focused subagent for static prototype reconnaissance plus browser evidence reports.
 
-Keep reusable workflow rules in these skills. Put app-specific facts in a target repo profile such as `docs/SPECIFICATION_PROFILE.md` or `docs/spec-system/PROJECT_PROFILE.md`.
+Keep reusable workflow rules in these skills. Put app-specific facts in a target repo profile such as `specs/SPECIFICATION_PROFILE.md` or `specs/spec-system/PROJECT_PROFILE.md`.

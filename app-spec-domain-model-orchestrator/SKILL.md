@@ -13,10 +13,7 @@ It is not a database schema, API design, component design, technical architectur
 
 ## Specification Profile
 
-Read the first specification profile that exists:
-
-1. `docs/SPECIFICATION_PROFILE.md`
-2. `docs/spec-system/PROJECT_PROFILE.md`
+Read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
 
 Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, role names, and source-priority notes. If no profile exists, use the defaults in `app-spec-guide`.
 
@@ -37,7 +34,7 @@ If the target cannot be confidently matched to a domain artifact or cross-flow c
 
 ## Expected Artifact Set
 
-Default folder: `docs/domain-model/`
+Default folder: `specs/domain-model/`
 
 - `00_INDEX.md`
 - `01_GLOSSARY.md`

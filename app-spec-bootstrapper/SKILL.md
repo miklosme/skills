@@ -13,10 +13,10 @@ The bootstrapper is the front door. It creates project-specific context and inde
 
 Create the minimum useful specification system:
 
-- `docs/SPECIFICATION_PROFILE.md`
-- `docs/user-flows/00_INDEX.md`
+- `specs/SPECIFICATION_PROFILE.md`
+- `specs/user-flows/00_INDEX.md`
 - a screenshot or evidence directory when a prototype is configured
-- optionally `docs/domain-model/00_INDEX.md` when shared states, roles, permissions, or lifecycle terms are already visible
+- optionally `specs/domain-model/00_INDEX.md` when shared states, roles, permissions, or lifecycle terms are already visible
 
 Then recommend the next 1-3 specification steps.
 
@@ -26,7 +26,7 @@ Inspect before interviewing when a repo exists.
 
 Use `rg` and `rg --files` to look for:
 
-- existing `docs/` specs, discovery material, PRDs, notes, tickets, or generated plans
+- existing `specs/` specs, discovery material, PRDs, notes, tickets, or generated plans
 - route, page, screen, component, fixture, mock data, and seed-data files
 - package scripts, dev-server commands, README setup notes, and test commands
 - environment hints for local URLs or ports
@@ -67,7 +67,7 @@ Make clear that app behavior and discovery material are evidence, not automatic 
 
 ## Profile Template
 
-Create `docs/SPECIFICATION_PROFILE.md` with this structure, adapting section details to the repo:
+Create `specs/SPECIFICATION_PROFILE.md` with this structure, adapting section details to the repo:
 
 ```md
 # Specification Profile: <Product Name>
@@ -76,13 +76,13 @@ Create `docs/SPECIFICATION_PROFILE.md` with this structure, adapting section det
 
 ## Specification Roots
 
-- User Flow Specs: `docs/user-flows/`
-- Domain and State Model: `docs/domain-model/`
-- UI Language: `docs/ui-language/`
-- Screen and Route Specs: `docs/screens-and-routes/`
-- Feature Design: `docs/feature-design/`
-- Technical Design: `docs/technical-design/`
-- Implementation Slices: `docs/implementation-slices/`
+- User Flow Specs: `specs/user-flows/`
+- Domain and State Model: `specs/domain-model/`
+- UI Language: `specs/ui-language/`
+- Screen and Route Specs: `specs/screens-and-routes/`
+- Feature Design: `specs/feature-design/`
+- Technical Design: `specs/technical-design/`
+- Implementation Slices: `specs/implementation-slices/`
 
 ## Discovery Inputs
 
@@ -111,7 +111,7 @@ Use `Not configured yet` instead of inventing URLs, scripts, or folders. Use `No
 
 ## User Flow Index Template
 
-Create `docs/user-flows/00_INDEX.md` with this structure:
+Create `specs/user-flows/00_INDEX.md` with this structure:
 
 ```md
 # User Flow Specs
@@ -129,9 +129,9 @@ This folder captures meaningful work from the user's perspective. User Flow Spec
 
 ## Flow Index
 
-| # | Flow | Status | Artifact | Notes |
-|---|------|--------|----------|-------|
-| 1 | <Flow Name> | Planned | `01_<FLOW_NAME>.md` | <Why this flow matters or source evidence> |
+| #   | Flow        | Status  | Artifact            | Notes                                      |
+| --- | ----------- | ------- | ------------------- | ------------------------------------------ |
+| 1   | <Flow Name> | Planned | `01_<FLOW_NAME>.md` | <Why this flow matters or source evidence> |
 
 ## Candidate Flows Not Yet Indexed
 
@@ -142,7 +142,7 @@ Index only flows with enough evidence to be useful. Put weaker guesses under `Ca
 
 ## Optional Domain Index
 
-Create `docs/domain-model/00_INDEX.md` only when the app clearly needs shared product contracts early, or when the user asks for implementation readiness beyond a single flow.
+Create `specs/domain-model/00_INDEX.md` only when the app clearly needs shared product contracts early, or when the user asks for implementation readiness beyond a single flow.
 
 Use this structure:
 
@@ -168,18 +168,18 @@ This folder captures shared product contracts consumed by implementation agents:
 
 ## Artifact Index
 
-| Artifact | Status | Purpose |
-|----------|--------|---------|
-| `01_GLOSSARY.md` | Planned | Shared terms and definitions. |
-| `02_DOMAIN_OBJECTS.md` | Planned | Product objects, ownership, and relationships. |
-| `03_STATE_MACHINES.md` | Planned | Lifecycle states and transitions. |
-| `04_ACTIONS_AND_SIDE_EFFECTS.md` | Planned | User and system actions plus side effects. |
-| `05_ROLES_AND_PERMISSIONS.md` | Planned | Actor capabilities and restrictions. |
-| `06_BUSINESS_RULES_AND_INVARIANTS.md` | Planned | Cross-flow rules that must remain true. |
+| Artifact                                 | Status  | Purpose                                        |
+| ---------------------------------------- | ------- | ---------------------------------------------- |
+| `01_GLOSSARY.md`                         | Planned | Shared terms and definitions.                  |
+| `02_DOMAIN_OBJECTS.md`                   | Planned | Product objects, ownership, and relationships. |
+| `03_STATE_MACHINES.md`                   | Planned | Lifecycle states and transitions.              |
+| `04_ACTIONS_AND_SIDE_EFFECTS.md`         | Planned | User and system actions plus side effects.     |
+| `05_ROLES_AND_PERMISSIONS.md`            | Planned | Actor capabilities and restrictions.           |
+| `06_BUSINESS_RULES_AND_INVARIANTS.md`    | Planned | Cross-flow rules that must remain true.        |
 | `07_SOURCE_OF_TRUTH_AND_DERIVED_DATA.md` | Planned | Canonical data, derived values, and ownership. |
-| `08_AUDIT_EVENTS.md` | Planned | Audit-worthy events and metadata. |
-| `09_OPEN_DECISIONS.md` | Planned | Central product-level decisions. |
-| `10_FLOW_TO_DOMAIN_TRACEABILITY.md` | Planned | Mapping from flows to domain contracts. |
+| `08_AUDIT_EVENTS.md`                     | Planned | Audit-worthy events and metadata.              |
+| `09_OPEN_DECISIONS.md`                   | Planned | Central product-level decisions.               |
+| `10_FLOW_TO_DOMAIN_TRACEABILITY.md`      | Planned | Mapping from flows to domain contracts.        |
 
 ## Bootstrap Notes
 ```
@@ -189,7 +189,7 @@ Do not create the planned domain artifacts during bootstrap unless the user expl
 ## File and Folder Rules
 
 - Preserve existing specs and indexes. Patch gaps instead of replacing user work.
-- Keep reusable workflow rules out of the target repo. Put only project-specific facts in `docs/SPECIFICATION_PROFILE.md`.
+- Keep reusable workflow rules out of the target repo. Put only project-specific facts in `specs/SPECIFICATION_PROFILE.md`.
 - Prefer planned links over empty placeholder files.
 - Use double-digit file prefixes for stage artifacts.
 - Create directories only when the bootstrap output needs them.

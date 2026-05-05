@@ -9,10 +9,7 @@ Use this skill to create or materially update User Flow Specs for an app specifi
 
 ## Specification Profile
 
-Read the first specification profile that exists:
-
-1. `docs/SPECIFICATION_PROFILE.md`
-2. `docs/spec-system/PROJECT_PROFILE.md`
+Read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
 
 Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, and role names. If no profile exists, use the defaults in `app-spec-guide`.
 
