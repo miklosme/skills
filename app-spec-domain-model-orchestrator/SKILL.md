@@ -9,7 +9,7 @@ Use this skill to create or materially update Domain and State Model artifacts f
 
 The Domain and State Model is the shared product contract that implementation agents consume after User Flow Specs exist. It defines product nouns, states, transitions, permissions, side effects, invariants, source-of-truth boundaries, audit events, and centralized product-level open decisions.
 
-It is not a database schema, API design, component design, technical architecture, or UI language spec.
+It is not a database schema, API design, technical architecture, or UI language spec.
 
 ## Specification Profile
 

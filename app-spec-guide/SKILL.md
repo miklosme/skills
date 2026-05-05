@@ -1,6 +1,6 @@
 ---
 name: app-spec-guide
-description: Use when a user asks about an app specification system, implementation-readiness specs, user-flow hardening, domain modeling, UI language, screen and route specs, technical design, component design, feature design, implementation slices, or what specification stage should come before or after another stage.
+description: Use when a user asks about an app specification system, implementation-readiness specs, user-flow hardening, domain modeling, UI language, screen and route specs, technical design, implementation slices, or what specification stage should come before or after another stage.
 ---
 
 # App Specification Guide
@@ -179,26 +179,7 @@ Expected coverage:
 - responsive expectations
 - screenshots or app evidence when useful
 
-### 5. Feature and Capability Design
-
-Suggested folder: `specs/feature-design/`
-
-Feature Design is useful for cross-cutting capabilities larger than one screen but narrower than the whole app.
-
-Expected coverage:
-
-- capability outcome
-- source user flows and domain rules
-- actors and permissions
-- affected screens or routes
-- user-visible states and edge cases
-- validation, notification, audit, or reporting behavior
-- exclusions and non-goals
-- open decisions
-
-Use this stage sparingly. Prefer User Flow Specs for workflow behavior, Domain and State Model artifacts for shared product contracts, and Screen and Route Specs for screen-level behavior.
-
-### 6. Technical Design
+### 5. Technical Design
 
 Suggested folder: `specs/technical-design/`
 
@@ -219,25 +200,7 @@ Expected coverage:
 
 Technical Design should consume earlier specs. It should not silently redefine product behavior, UI language, or screen requirements.
 
-### 7. Component Design
-
-Suggested folder: `specs/component-design/`
-
-Component Design is useful when repeated UI patterns need precise implementation guidance. It should come after UI Language and at least the relevant Screen and Route Specs.
-
-Expected coverage:
-
-- reusable component purpose
-- where it appears
-- product-level props or configuration
-- visual states and interaction states
-- accessibility expectations
-- data and permission assumptions
-- anti-patterns and non-goals
-
-Avoid component design for one-off screens unless the user explicitly asks for it.
-
-### 8. Implementation Slices
+### 6. Implementation Slices
 
 Suggested folder: `specs/implementation-slices/`
 
@@ -272,11 +235,10 @@ For implementation work, prefer this context order:
 1. The relevant implementation slice, if present.
 2. Relevant Screen and Route Specs.
 3. UI Language artifacts for interaction and visual decisions.
-4. Relevant Feature and Capability Design artifacts, if present.
-5. Domain and State Model artifacts for shared product behavior.
-6. Relevant User Flow Specs for workflow intent.
-7. App code and current app behavior as implementation evidence.
-8. Product discovery only when the specification set is silent or the user asks for deeper expectation mining.
+4. Domain and State Model artifacts for shared product behavior.
+5. Relevant User Flow Specs for workflow intent.
+6. App code and current app behavior as implementation evidence.
+7. Product discovery only when the specification set is silent or the user asks for deeper expectation mining.
 
 ## Open Questions and Open Decisions
 

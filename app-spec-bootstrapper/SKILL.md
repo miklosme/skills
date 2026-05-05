@@ -80,7 +80,6 @@ Create `specs/SPECIFICATION_PROFILE.md` with this structure, adapting section de
 - Domain and State Model: `specs/domain-model/`
 - UI Language: `specs/ui-language/`
 - Screen and Route Specs: `specs/screens-and-routes/`
-- Feature Design: `specs/feature-design/`
 - Technical Design: `specs/technical-design/`
 - Implementation Slices: `specs/implementation-slices/`
 
