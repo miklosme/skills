@@ -1,13 +1,13 @@
 ---
 name: specification
-description: Specification system for turning discovery material, prototypes, and product decisions into implementation-ready app specs. Use when the user asks to start or bootstrap specs, create, update, or harden User Flow Specs, create or update Domain and State Model artifacts, review or reconcile specification consistency, plan UI language, screen and route specs, technical design, implementation slices, or decide which specification stage comes next.
+description: Specification system for turning discovery material, prototypes, and product decisions into implementation-ready app specs. Use when the user asks to start or bootstrap specs, create, update, or harden User Flow Specs, create or update Domain and State Model artifacts, create or update Design System specs, review or reconcile specification consistency, plan screen and route specs, technical design, implementation slices, or decide which specification stage comes next.
 ---
 
 # Specification
 
 This skill explains a reusable specification system for turning noisy discovery material, prototypes, and user clarifications into implementation-ready product context.
 
-The specification workflow moves through seven stages: Bootstrap -> User Flow Specs -> Domain and State Model -> UI Language and Interaction System -> Screen and Route Specs -> Technical Design -> Implementation Slices. Earlier stages establish product truth and interaction intent; later stages translate that context into screen behavior, technical architecture, and vertical build plans for coding agents.
+The specification workflow moves through seven stages: Bootstrap -> User Flow Specs -> Domain and State Model -> Design System -> Screen and Route Specs -> Technical Design -> Implementation Slices. Earlier stages establish product truth and interaction intent; later stages translate that context into screen behavior, technical architecture, and vertical build plans for coding agents.
 
 It is both the shared guide and the router for specification work. Follow the user's requested scope, then load only the child workflow docs needed for the task.
 
@@ -16,9 +16,10 @@ It is both the shared guide and the router for specification work. Follow the us
 - **Bootstrap**: Read [bootstrapper.md](bootstrapper.md) when starting, bootstrapping, scaffolding, or setting up an app specification system.
 - **User Flow Specs**: Read [user-flow-orchestrator.md](user-flow-orchestrator.md) when creating, updating, hardening, or orchestrating User Flow Specs.
 - **Domain and State Model**: Read [domain-model-orchestrator.md](domain-model-orchestrator.md) when creating or updating shared glossary, domain objects, states, permissions, audit events, open decisions, or flow-to-domain traceability.
+- **Design System**: Read [design-system-orchestrator.md](design-system-orchestrator.md) when creating or materially updating Design System artifacts, design preferences, UI pattern guidance, visual language, interaction conventions, or screenshot-grounded UI examples.
 - **Consistency Review**: Read [consistency-reviewer.md](consistency-reviewer.md) when auditing, reconciling, validating, or reviewing specification artifacts for drift, conflicts, missing traceability, or implementation-readiness gaps.
 
-Use this `SKILL.md` alone when the user asks about stage ordering, artifact boundaries, UI language, screen and route specs, technical design, implementation slices, or general specification guidance without asking for one of the child workflows.
+Use this `SKILL.md` alone when the user asks about stage ordering, artifact boundaries, screen and route specs, technical design, implementation slices, or general specification guidance without asking for one of the child workflows.
 
 When starting a specification effort from scratch, read [bootstrapper.md](bootstrapper.md) before stage-specific authoring workflows.
 
@@ -48,10 +49,10 @@ The loop is:
 - Product discovery material is value input, not canonical specification truth.
 - User Flow Specs own workflow-specific start conditions, actions, system responses, prototype observations, and flow-local edge cases.
 - Domain and State Model artifacts own shared terminology, objects, states, transitions, permissions, source-of-truth rules, audit events, and product-level open decisions.
-- UI Language artifacts own visual, interaction, density, hierarchy, and microcopy conventions.
+- Design System artifacts own visual, interaction, density, hierarchy, UI pattern, and microcopy conventions.
 - Screen and Route Specs own per-screen user-visible behavior, layout intent, states, and navigation.
 - Technical Design artifacts own implementation architecture and engineering contracts.
-- If artifacts conflict, call out the conflict and prefer updating the upstream product or UI artifact instead of inventing behavior inside downstream technical work.
+- If artifacts conflict, call out the conflict and prefer updating the upstream product or Design System artifact instead of inventing behavior inside downstream technical work.
 
 ## Artifact Conventions
 
@@ -151,30 +152,21 @@ The Domain and State Model turns user flows into shared product contracts for im
 
 Use it as the canonical source for cross-flow product behavior once it exists.
 
-### 3. UI Language and Interaction System
+### 3. Design System
 
-Suggested folder: `specs/ui-language/`
+Suggested folder: `specs/design-system/`
 
-This stage defines how the app should look, feel, and behave. It is not decoration; it is implementation context.
+Created or materially updated by the [design-system orchestrator workflow](design-system-orchestrator.md).
 
-Expected coverage:
+This stage defines how the app should look, feel, and behave. It is not decoration; it is implementation context. It is intentionally loosely defined: the user's design preferences should control the artifact shape, depth, vocabulary, and visual direction.
 
-- product personality, density, and hierarchy
-- navigation and page layout rules
-- tables, lists, filtering, sorting, and drill-down behavior
-- forms, validation, blocked states, and destructive confirmations
-- modals, drawers, tabs, panels, and activity timelines
-- status badges, priority language, confidence indicators, and color semantics
-- empty, loading, error, warning, success, and read-only states
-- responsive behavior and accessibility expectations
-- icon, button, control, and microcopy conventions
-- visual patterns the app should avoid
+Primary input comes from a planmaxxing-style interview where the user explains design preferences one decision at a time. Optional UI screenshots can ground concrete patterns such as tables, forms, pages, navigation, cards, filters, modals, empty states, and dashboards.
 
 ### 4. Screen and Route Specs
 
 Suggested folder: `specs/screens-and-routes/`
 
-Screen and Route Specs translate flows, domain contracts, and UI language into implementable app surfaces.
+Screen and Route Specs translate flows, domain contracts, and Design System guidance into implementable app surfaces.
 
 Expected coverage:
 
@@ -194,7 +186,7 @@ Expected coverage:
 
 Suggested folder: `specs/technical-design/`
 
-Technical Design explains how implementation should satisfy product, domain, UI, and screen contracts.
+Technical Design explains how implementation should satisfy product, domain, Design System, and screen contracts.
 
 Expected coverage:
 
@@ -209,7 +201,7 @@ Expected coverage:
 - test strategy
 - migration or seed-data strategy when relevant
 
-Technical Design should consume earlier specs. It should not silently redefine product behavior, UI language, or screen requirements.
+Technical Design should consume earlier specs. It should not silently redefine product behavior, Design System guidance, or screen requirements.
 
 ### 6. Implementation Slices
 
@@ -245,7 +237,7 @@ For implementation work, prefer this context order:
 
 1. The relevant implementation slice, if present.
 2. Relevant Screen and Route Specs.
-3. UI Language artifacts for interaction and visual decisions.
+3. Design System artifacts for interaction and visual decisions.
 4. Domain and State Model artifacts for shared product behavior.
 5. Relevant User Flow Specs for workflow intent.
 6. App code and current app behavior as implementation evidence.

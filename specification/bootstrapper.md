@@ -2,7 +2,7 @@
 
 Use this workflow to set up the first durable specification structure for an app.
 
-The bootstrapper is the front door. It creates project-specific context and indexes so the stage-specific workflows can work well later. It should not write full User Flow Specs, Domain Model artifacts, UI Language specs, Screen and Route Specs, or Technical Design unless the user explicitly expands the scope.
+The bootstrapper is the front door. It creates project-specific context and indexes so the stage-specific workflows can work well later. It should not write full User Flow Specs, Domain Model artifacts, Design System specs, Screen and Route Specs, or Technical Design unless the user explicitly expands the scope.
 
 ## Bootstrap Goal
 
@@ -73,7 +73,7 @@ Create `specs/SPECIFICATION_PROFILE.md` with this structure, adapting section de
 
 - User Flow Specs: `specs/user-flows/`
 - Domain and State Model: `specs/domain-model/`
-- UI Language: `specs/ui-language/`
+- Design System: `specs/design-system/`
 - Screen and Route Specs: `specs/screens-and-routes/`
 - Technical Design: `specs/technical-design/`
 - Implementation Slices: `specs/implementation-slices/`

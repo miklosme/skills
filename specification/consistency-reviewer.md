@@ -48,7 +48,7 @@ Look for:
 - flow-to-domain traceability that omits important objects, states, actions, permissions, audit events, invariants, source-of-truth rules, or open decisions
 - prototype observations written as intended product behavior
 - technical implementation details leaking into product-level artifacts
-- UI language or screen behavior silently redefining domain rules
+- Design System guidance or screen behavior silently redefining domain rules
 - implementation slices missing key source specs, acceptance criteria, roles, states, exclusions, or testing expectations
 - language that collapses important product distinctions named in the specification profile
 
