@@ -7,6 +7,8 @@ description: Specification system for turning discovery material, prototypes, an
 
 This skill explains a reusable specification system for turning noisy discovery material, prototypes, and user clarifications into implementation-ready product context.
 
+The specification workflow moves through seven stages: Bootstrap -> User Flow Specs -> Domain and State Model -> UI Language and Interaction System -> Screen and Route Specs -> Technical Design -> Implementation Slices. Earlier stages establish product truth and interaction intent; later stages translate that context into screen behavior, technical architecture, and vertical build plans for coding agents.
+
 It is both the shared guide and the router for specification work. Follow the user's requested scope, then load only the child workflow docs needed for the task.
 
 ## Child Workflow Docs
@@ -79,7 +81,7 @@ Index links are planning contracts:
 - link exists and file exists: no creation work is needed unless the user asks for an update
 - file exists but is not in the index: reconcile before relying on it as part of the stage
 
-## Specification Stages
+## Stage Details
 
 ### 0. Bootstrap
 
