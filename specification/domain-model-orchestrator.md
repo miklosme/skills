@@ -1,11 +1,6 @@
----
-name: app-spec-domain-model-orchestrator
-description: Create or materially update Domain and State Model artifacts from user flows, discovery material, prototype evidence, and product decisions. Use when the user asks for domain modeling, shared glossary, state machines, permissions, audit events, implementation-readiness context, centralized open decisions, or cross-flow product contracts.
----
-
 # Domain Model Orchestrator
 
-Use this skill to create or materially update Domain and State Model artifacts for an app specification system.
+Use this workflow to create or materially update Domain and State Model artifacts for an app specification system.
 
 The Domain and State Model is the shared product contract that implementation agents consume after User Flow Specs exist. It defines product nouns, states, transitions, permissions, side effects, invariants, source-of-truth boundaries, audit events, and centralized product-level open decisions.
 
@@ -15,7 +10,7 @@ It is not a database schema, API design, technical architecture, or UI language 
 
 Read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
 
-Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, role names, and source-priority notes. If no profile exists, use the defaults in `app-spec-guide`.
+Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, role names, and source-priority notes. If no profile exists, use the defaults in [SKILL.md](SKILL.md).
 
 ## Resolve the Target Scope
 

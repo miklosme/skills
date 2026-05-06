@@ -1,17 +1,12 @@
----
-name: app-spec-user-flow-orchestrator
-description: Create or materially update User Flow Specs using indexed specification artifacts, discovery material, prototype evidence, bounded autonomous decision-making, screenshots, and final review. Use when the user asks to create, update, harden, or orchestrate a user flow spec.
----
-
 # User Flow Spec Orchestrator
 
-Use this skill to create or materially update User Flow Specs for an app specification system.
+Use this workflow to create or materially update User Flow Specs for an app specification system.
 
 ## Specification Profile
 
 Read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
 
-Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, and role names. If no profile exists, use the defaults in `app-spec-guide`.
+Use the profile for product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, and role names. If no profile exists, use the defaults in [SKILL.md](SKILL.md).
 
 ## Resolve the Target Flow
 
@@ -181,7 +176,7 @@ Use the ledger to draft the spec, but do not paste it into the spec.
 
 ## Drafting Rules
 
-Use the User Flow Spec template from `app-spec-guide`.
+Use the User Flow Spec template from [SKILL.md](SKILL.md).
 
 Keep the spec flow-centered, outcome-grounded, and user-visible. Do not turn it into a technical design, ticket list, generic PRD, or copied discovery notes.
 

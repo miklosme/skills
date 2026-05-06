@@ -1,23 +1,32 @@
 ---
-name: app-spec-guide
-description: Use when a user asks about an app specification system, implementation-readiness specs, user-flow hardening, domain modeling, UI language, screen and route specs, technical design, implementation slices, or what specification stage should come before or after another stage.
+name: specification
+description: Specification system for turning discovery material, prototypes, and product decisions into implementation-ready app specs. Use when the user asks to start or bootstrap specs, create, update, or harden User Flow Specs, create or update Domain and State Model artifacts, review or reconcile specification consistency, plan UI language, screen and route specs, technical design, implementation slices, or decide which specification stage comes next.
 ---
 
-# App Specification Guide
+# Specification
 
 This skill explains a reusable specification system for turning noisy discovery material, prototypes, and user clarifications into implementation-ready product context.
 
-It is a context skill, not an autonomous orchestrator. Follow the user's requested scope and use a stage-specific skill when one exists.
+It is both the shared guide and the router for specification work. Follow the user's requested scope, then load only the child workflow docs needed for the task.
 
-When starting a specification effort from scratch, use `app-spec-bootstrapper` before stage-specific authoring skills.
+## Child Workflow Docs
+
+- **Bootstrap**: Read [bootstrapper.md](bootstrapper.md) when starting, bootstrapping, scaffolding, or setting up an app specification system.
+- **User Flow Specs**: Read [user-flow-orchestrator.md](user-flow-orchestrator.md) when creating, updating, hardening, or orchestrating User Flow Specs.
+- **Domain and State Model**: Read [domain-model-orchestrator.md](domain-model-orchestrator.md) when creating or updating shared glossary, domain objects, states, permissions, audit events, open decisions, or flow-to-domain traceability.
+- **Consistency Review**: Read [consistency-reviewer.md](consistency-reviewer.md) when auditing, reconciling, validating, or reviewing specification artifacts for drift, conflicts, missing traceability, or implementation-readiness gaps.
+
+Use this `SKILL.md` alone when the user asks about stage ordering, artifact boundaries, UI language, screen and route specs, technical design, implementation slices, or general specification guidance without asking for one of the child workflows.
+
+When starting a specification effort from scratch, read [bootstrapper.md](bootstrapper.md) before stage-specific authoring workflows.
 
 ## Specification Profile
 
-For repo-specific facts, Read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
+For repo-specific facts, read the first specification profile: `specs/SPECIFICATION_PROFILE.md`
 
 The specification profile may define the product name, spec roots, discovery inputs, prototype URL, server policy, screenshot directory, domain-specific terminology, role names, and source-priority notes.
 
-Keep reusable workflow rules in skills. Keep project-specific facts in the profile.
+Keep reusable workflow rules in this skill and its child workflow docs. Keep project-specific facts in the profile.
 
 ## Specification Goal
 
@@ -80,7 +89,7 @@ Default files:
 - `specs/user-flows/00_INDEX.md`
 - optionally `specs/domain-model/00_INDEX.md`
 
-Created or materially updated by `app-spec-bootstrapper`.
+Created or materially updated by the [bootstrapper workflow](bootstrapper.md).
 
 Bootstrap establishes project-specific facts, source priority, prototype evidence settings, initial flow candidates, and open setup questions. It should not create full stage artifacts unless the user explicitly asks.
 
@@ -88,7 +97,7 @@ Bootstrap establishes project-specific facts, source priority, prototype evidenc
 
 Default folder: `specs/user-flows/`
 
-Created or materially updated by `app-spec-user-flow-orchestrator`.
+Created or materially updated by the [user-flow orchestrator workflow](user-flow-orchestrator.md).
 
 User Flow Specs describe meaningful work from the user's perspective. They are flow-centered, outcome-grounded, and pair user actions with system responses.
 
@@ -134,7 +143,7 @@ Do not add default `Sources` or `Discovery Notes` sections. Discovery material i
 
 Default folder: `specs/domain-model/`
 
-Created or materially updated by `app-spec-domain-model-orchestrator`.
+Created or materially updated by the [domain-model orchestrator workflow](domain-model-orchestrator.md).
 
 The Domain and State Model turns user flows into shared product contracts for implementation agents: glossary, product objects, state machines, actions and side effects, roles and permissions, invariants, source-of-truth rules, audit events, open decisions, and flow traceability.
 

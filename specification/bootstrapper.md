@@ -1,13 +1,8 @@
----
-name: app-spec-bootstrapper
-description: Initialize a new app specification effort. Use when the user asks to start, bootstrap, scaffold, or set up an app specification system for a repo, prototype, existing app, or planned app before detailed user-flow, domain-model, UI, screen, technical, or implementation-slice specs exist.
----
-
 # App Spec Bootstrapper
 
-Use this skill to set up the first durable specification structure for an app.
+Use this workflow to set up the first durable specification structure for an app.
 
-The bootstrapper is the front door. It creates project-specific context and indexes so the stage-specific skills can work well later. It should not write full User Flow Specs, Domain Model artifacts, UI Language specs, Screen and Route Specs, or Technical Design unless the user explicitly expands the scope.
+The bootstrapper is the front door. It creates project-specific context and indexes so the stage-specific workflows can work well later. It should not write full User Flow Specs, Domain Model artifacts, UI Language specs, Screen and Route Specs, or Technical Design unless the user explicitly expands the scope.
 
 ## Bootstrap Goal
 
@@ -202,6 +197,6 @@ End with:
 - evidence sources found
 - assumptions made
 - open bootstrap questions
-- recommended next skill, usually `app-spec-user-flow-orchestrator`, `app-spec-domain-model-orchestrator`, or `app-spec-guide`
+- recommended next workflow, usually [user-flow-orchestrator.md](user-flow-orchestrator.md), [domain-model-orchestrator.md](domain-model-orchestrator.md), or [SKILL.md](SKILL.md)
 
 If the next step is obvious, recommend the first concrete User Flow Spec to draft.
