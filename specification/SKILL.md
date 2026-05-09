@@ -18,9 +18,10 @@ It is both the shared guide and the router for specification work. Follow the us
 - **Domain and State Model**: Read [domain-model-orchestrator.md](domain-model-orchestrator.md) when creating or updating shared glossary, domain objects, states, permissions, audit events, open decisions, or flow-to-domain traceability.
 - **Design System**: Read [design-system-orchestrator.md](design-system-orchestrator.md) when creating or materially updating Design System artifacts, design preferences, UI pattern guidance, visual language, interaction conventions, or screenshot-grounded UI examples.
 - **Technical Design**: Read [technical-design-orchestrator.md](technical-design-orchestrator.md) when creating or materially updating Technical Design artifacts, implementation architecture, code boundaries, persistence strategy, integration boundaries, testing strategy, or coding conventions.
+- **Implementation Slices**: Read [implementation-slice-orchestrator.md](implementation-slice-orchestrator.md) when creating, updating, splitting, ordering, reviewing, or distilling implementation slices from the specification set.
 - **Consistency Review**: Read [consistency-reviewer.md](consistency-reviewer.md) when auditing, reconciling, validating, or reviewing specification artifacts for drift, conflicts, missing traceability, or implementation-readiness gaps.
 
-Use this `SKILL.md` alone when the user asks about stage ordering, artifact boundaries, screen and route specs, implementation slices, or general specification guidance without asking for one of the child workflows.
+Use this `SKILL.md` alone when the user asks about stage ordering, artifact boundaries, screen and route specs, or general specification guidance without asking for one of the child workflows.
 
 When starting a specification effort from scratch, read [bootstrapper.md](bootstrapper.md) before stage-specific authoring workflows.
 
@@ -209,6 +210,8 @@ Technical Design should consume earlier specs. It should not silently redefine p
 ### 6. Implementation Slices
 
 Suggested folder: `specs/implementation-slices/`
+
+Created or materially updated by the [implementation-slice orchestrator workflow](implementation-slice-orchestrator.md).
 
 Implementation slices are vertical build plans for coding agents. They group the minimum product, UI, domain, and technical context needed to implement and test one meaningful increment.
 

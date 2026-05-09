@@ -65,7 +65,7 @@ For new or materially updated User Flow Specs, use browser exploration when a pr
 
 If browser evidence is required and the profile says the user owns the server, check reachability first. If unreachable, ask the user to start or fix the server and do not finalize browser-dependent observations.
 
-When the user or current instructions explicitly permit subagent delegation, launch one `app_spec_prototype_browser_explorer` subagent with a narrow brief. Otherwise, perform the same work locally while keeping raw browser or code output out of the final spec.
+When browser exploration would benefit from isolated context, launch one `app_spec_prototype_browser_explorer` subagent with a narrow brief. Keep raw browser or code output out of the final spec.
 
 The explorer brief should include:
 
@@ -120,7 +120,7 @@ Flow-local ambiguity may remain in the User Flow Spec only when it is narrow to 
 
 Run a bounded autonomous decision loop before drafting.
 
-For material decision questions, consult a high-reasoning general subagent only when the user or current instructions explicitly permit subagent delegation. Otherwise, answer the same decision questions locally and record the reasoning internally.
+For material decision questions, consult a high-reasoning general subagent when an independent reasoning pass would improve confidence.
 
 Decision questions should:
 
@@ -195,7 +195,7 @@ Reference screenshots only when they clarify the flow.
 
 ## Final Review
 
-After drafting, consult a high-reasoning reviewer subagent only when the user or current instructions explicitly permit subagent delegation. Otherwise, perform the same review locally.
+After drafting, consult a high-reasoning reviewer subagent when an independent review would improve coverage.
 
 Check:
 

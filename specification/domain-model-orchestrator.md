@@ -241,7 +241,7 @@ Keep a flow-local question only when it is genuinely narrow to that flow and doe
 
 Before drafting or materially changing domain artifacts, run a bounded decision loop.
 
-For material decision questions, consult a high-reasoning general subagent only when the user or current instructions explicitly permit subagent delegation. Otherwise, do the decision pass locally and record the reasoning internally.
+For material decision questions, consult a high-reasoning general subagent when an independent reasoning pass would improve confidence.
 
 Decision questions should be evidence-bound. They should:
 
@@ -293,7 +293,7 @@ Preserve user-flow links where useful, but do not create a default `Sources` sec
 
 ## Final Review
 
-After drafting, perform a review pass. Consult a high-reasoning reviewer subagent only when the user or current instructions explicitly permit subagent delegation. Otherwise, review locally.
+After drafting, perform a review pass. Consult a high-reasoning reviewer subagent when an independent review would improve coverage.
 
 Check:
 
