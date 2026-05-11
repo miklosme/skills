@@ -2,7 +2,7 @@
 
 Use this workflow to set up the first durable specification structure for an app.
 
-The bootstrapper is the front door. It creates project-specific context and indexes so the stage-specific workflows can work well later. It should not write full User Flow Specs, Domain Model artifacts, Design System specs, Screen and Route Specs, or Technical Design unless the user explicitly expands the scope.
+The bootstrapper is the front door. It creates project-specific context and indexes so the stage-specific workflows can work well later. It should not write full User Flow Specs, Design System specs, Screen and Route Specs, Technical Design, or Domain Modeling artifacts unless the user explicitly expands the scope.
 
 ## Bootstrap Goal
 
@@ -11,7 +11,6 @@ Create the minimum useful specification system:
 - `specs/SPECIFICATION_PROFILE.md`
 - `specs/user-flows/00_INDEX.md`
 - a screenshot or evidence directory when a prototype is configured
-- optionally `specs/domain-model/00_INDEX.md` when shared states, roles, permissions, or lifecycle terms are already visible
 
 Then recommend the next 1-3 specification steps.
 
@@ -39,7 +38,7 @@ Prefer one concise batch of at most five questions. Ask fewer when possible.
 High-value bootstrap questions:
 
 - What is the product or app name?
-- What outcome should the first implementation pass support?
+- What outcome should the first specification pass support?
 - Where is the prototype or running app, and who owns starting the dev server?
 - Which discovery inputs should be treated as important source material?
 - Which roles, domain terms, or product distinctions must not be simplified away?
@@ -72,11 +71,10 @@ Create `specs/SPECIFICATION_PROFILE.md` with this structure, adapting section de
 ## Specification Roots
 
 - User Flow Specs: `specs/user-flows/`
-- Domain and State Model: `specs/domain-model/`
 - Design System: `specs/design-system/`
 - Screen and Route Specs: `specs/screens-and-routes/`
 - Technical Design: `specs/technical-design/`
-- Implementation Slices: `specs/implementation-slices/`
+- Domain Modeling: `specs/domain-model/`
 
 ## Discovery Inputs
 
@@ -118,7 +116,7 @@ This folder captures meaningful work from the user's perspective. User Flow Spec
 
 1. Read this index.
 2. Read the relevant User Flow Spec.
-3. Read the Domain and State Model when it exists.
+3. Read Domain Modeling artifacts when they exist and the flow needs established model terms.
 4. Read prototype evidence or discovery inputs only when the spec points to them or when resolving ambiguity.
 
 ## Flow Index
@@ -134,51 +132,11 @@ This folder captures meaningful work from the user's perspective. User Flow Spec
 
 Index only flows with enough evidence to be useful. Put weaker guesses under `Candidate Flows Not Yet Indexed`.
 
-## Optional Domain Index
+## Domain Modeling During Bootstrap
 
-Create `specs/domain-model/00_INDEX.md` only when the app clearly needs shared product contracts early, or when the user asks for implementation readiness beyond a single flow.
+Do not create `specs/domain-model/` during bootstrap by default. Domain Modeling is the final stage, and it is most useful after User Flow Specs, Screen and Route Specs, and Technical Design have established the inputs it needs.
 
-Use this structure:
-
-```md
-# Domain and State Model
-
-## Purpose
-
-This folder captures shared product contracts consumed by implementation agents: glossary, domain objects, state machines, actions and side effects, roles and permissions, business rules, source-of-truth boundaries, audit events, open decisions, and flow traceability.
-
-## Reading Order
-
-1. `01_GLOSSARY.md`
-2. `02_DOMAIN_OBJECTS.md`
-3. `03_STATE_MACHINES.md`
-4. `04_ACTIONS_AND_SIDE_EFFECTS.md`
-5. `05_ROLES_AND_PERMISSIONS.md`
-6. `06_BUSINESS_RULES_AND_INVARIANTS.md`
-7. `07_SOURCE_OF_TRUTH_AND_DERIVED_DATA.md`
-8. `08_AUDIT_EVENTS.md`
-9. `09_OPEN_DECISIONS.md`
-10. `10_FLOW_TO_DOMAIN_TRACEABILITY.md`
-
-## Artifact Index
-
-| Artifact                                 | Status  | Purpose                                        |
-| ---------------------------------------- | ------- | ---------------------------------------------- |
-| `01_GLOSSARY.md`                         | Planned | Shared terms and definitions.                  |
-| `02_DOMAIN_OBJECTS.md`                   | Planned | Product objects, ownership, and relationships. |
-| `03_STATE_MACHINES.md`                   | Planned | Lifecycle states and transitions.              |
-| `04_ACTIONS_AND_SIDE_EFFECTS.md`         | Planned | User and system actions plus side effects.     |
-| `05_ROLES_AND_PERMISSIONS.md`            | Planned | Actor capabilities and restrictions.           |
-| `06_BUSINESS_RULES_AND_INVARIANTS.md`    | Planned | Cross-flow rules that must remain true.        |
-| `07_SOURCE_OF_TRUTH_AND_DERIVED_DATA.md` | Planned | Canonical data, derived values, and ownership. |
-| `08_AUDIT_EVENTS.md`                     | Planned | Audit-worthy events and metadata.              |
-| `09_OPEN_DECISIONS.md`                   | Planned | Central product-level decisions.               |
-| `10_FLOW_TO_DOMAIN_TRACEABILITY.md`      | Planned | Mapping from flows to domain contracts.        |
-
-## Bootstrap Notes
-```
-
-Do not create the planned domain artifacts during bootstrap unless the user explicitly asks.
+If the user explicitly asks to scaffold Domain Modeling during bootstrap, create only `specs/domain-model/00_INDEX.md` with planned links and a note that the final artifact set depends on later Technical Design choices. Do not create full domain artifacts during bootstrap unless the user explicitly asks.
 
 ## File and Folder Rules
 
@@ -197,6 +155,6 @@ End with:
 - evidence sources found
 - assumptions made
 - open bootstrap questions
-- recommended next workflow, usually [user-flow-orchestrator.md](user-flow-orchestrator.md), [domain-model-orchestrator.md](domain-model-orchestrator.md), or [SKILL.md](SKILL.md)
+- recommended next workflow, usually [user-flow-orchestrator.md](user-flow-orchestrator.md), [design-system-orchestrator.md](design-system-orchestrator.md), or [SKILL.md](SKILL.md)
 
 If the next step is obvious, recommend the first concrete User Flow Spec to draft.

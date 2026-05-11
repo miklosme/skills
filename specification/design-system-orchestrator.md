@@ -140,7 +140,7 @@ Use only the sections that fit the user's preferred output.
 
 ## Boundaries
 
-- Do not invent product behavior that belongs in User Flow Specs or Domain and State Model artifacts.
+- Do not invent product behavior that belongs in User Flow Specs or Domain Modeling artifacts.
 - Do not silently override screen-specific requirements; update Screen and Route Specs when design guidance changes screen behavior.
 - Do not turn screenshots into canonical design requirements without user preference or explicit confirmation.
 - Keep technical implementation details out unless they materially constrain design, such as an existing component library.

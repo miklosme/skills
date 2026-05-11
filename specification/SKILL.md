@@ -1,25 +1,28 @@
 ---
 name: specification
-description: Specification system for turning discovery material, prototypes, and product decisions into implementation-ready app specs. Use when the user asks to start or bootstrap specs, create, update, or harden User Flow Specs, create or update Domain and State Model artifacts, create or update Design System specs, review or reconcile specification consistency, plan screen and route specs, technical design, implementation slices, or decide which specification stage comes next.
+description: Specification system for turning discovery material, prototypes, and product decisions into implementation-ready app specs while keeping implementation planning out of scope. Use when the user asks to start or bootstrap specs, create, update, or harden User Flow Specs, create or update Design System specs, review or reconcile specification consistency, plan screen and route specs, technical design, domain modeling, or decide which specification stage comes next.
 ---
 
 # Specification
 
-This skill explains a reusable specification system for turning noisy discovery material, prototypes, and user clarifications into implementation-ready product context.
+This skill explains a reusable specification system for turning noisy discovery material, prototypes, and user clarifications into durable app specifications.
 
-The specification workflow moves through seven stages: Bootstrap -> User Flow Specs -> Domain and State Model -> Design System -> Screen and Route Specs -> Technical Design -> Implementation Slices. Earlier stages establish product truth and interaction intent; later stages translate that context into screen behavior, technical architecture, and vertical build plans for coding agents.
+The specification workflow moves through six stages: Bootstrap -> User Flow Specs -> Design System -> Screen and Route Specs -> Technical Design -> Domain Modeling. Earlier stages establish product truth, interaction intent, and surface behavior. Later stages translate that context into technical choices and final domain contracts that can be handed to implementation agents without becoming an implementation plan.
+
+Implementation planning is out of scope for this skill. Do not create vertical build plans, task tickets, sprint slices, coding runbooks, or implementation sequence artifacts as part of the specification system. If the user asks for implementation planning, explain that the specification set can serve as source material for a separate implementation workflow.
 
 It is both the shared guide and the router for specification work. Follow the user's requested scope, then load only the child workflow docs needed for the task.
+
+For the design philosophy behind this skill, read [README.md](README.md).
 
 ## Child Workflow Docs
 
 - **Bootstrap**: Read [bootstrapper.md](bootstrapper.md) when starting, bootstrapping, scaffolding, or setting up an app specification system.
 - **User Flow Specs**: Read [user-flow-orchestrator.md](user-flow-orchestrator.md) when creating, updating, hardening, or orchestrating User Flow Specs.
-- **Domain and State Model**: Read [domain-model-orchestrator.md](domain-model-orchestrator.md) when creating or updating shared glossary, domain objects, states, permissions, audit events, open decisions, or flow-to-domain traceability.
 - **Design System**: Read [design-system-orchestrator.md](design-system-orchestrator.md) when creating or materially updating Design System artifacts, design preferences, UI pattern guidance, visual language, interaction conventions, or screenshot-grounded UI examples.
-- **Technical Design**: Read [technical-design-orchestrator.md](technical-design-orchestrator.md) when creating or materially updating Technical Design artifacts, implementation architecture, code boundaries, persistence strategy, integration boundaries, testing strategy, or coding conventions.
-- **Implementation Slices**: Read [implementation-slice-orchestrator.md](implementation-slice-orchestrator.md) when creating, updating, splitting, ordering, reviewing, or distilling implementation slices from the specification set.
-- **Consistency Review**: Read [consistency-reviewer.md](consistency-reviewer.md) when auditing, reconciling, validating, or reviewing specification artifacts for drift, conflicts, missing traceability, or implementation-readiness gaps.
+- **Technical Design**: Read [technical-design-orchestrator.md](technical-design-orchestrator.md) when creating or materially updating Technical Design artifacts, architecture choices, code boundaries, persistence strategy, integration boundaries, testing strategy, or coding conventions.
+- **Domain Modeling**: Read [domain-model-orchestrator.md](domain-model-orchestrator.md) when creating or updating final domain contracts, glossary, domain objects, schema design, state machines, permissions, audit events, model-level test plans, open decisions, or flow-to-domain traceability.
+- **Consistency Review**: Read [consistency-reviewer.md](consistency-reviewer.md) when auditing, reconciling, validating, or reviewing specification artifacts for drift, conflicts, missing traceability, or handoff-readiness gaps.
 
 Use this `SKILL.md` alone when the user asks about stage ordering, artifact boundaries, screen and route specs, or general specification guidance without asking for one of the child workflows.
 
@@ -35,26 +38,26 @@ Keep reusable workflow rules in this skill and its child workflow docs. Keep pro
 
 ## Specification Goal
 
-The specification exists to give coding agents enough product, UI, and technical context to implement an app deliberately.
+The specification exists to give coding agents enough product, UI, domain, and technical context to implement an app deliberately.
 
 The loop is:
 
 1. Write or refine specification artifacts.
-2. Ask coding agents to implement from those artifacts.
+2. Ask coding agents to implement from those artifacts in a separate implementation workflow.
 3. Test the app.
 4. Improve the relevant specification artifact when implementation misses desired behavior.
-5. Regenerate or revise the affected part of the app.
+5. Regenerate or revise the affected part of the app from the improved spec.
 
 ## Source Authority
 
 - The app is evidence, not automatic product truth. It may be production, prototype, incomplete, or partially generated.
 - Product discovery material is value input, not canonical specification truth.
 - User Flow Specs own workflow-specific start conditions, actions, system responses, prototype observations, and flow-local edge cases.
-- Domain and State Model artifacts own shared terminology, objects, states, transitions, permissions, source-of-truth rules, audit events, and product-level open decisions.
 - Design System artifacts own visual, interaction, density, hierarchy, UI pattern, and microcopy conventions.
 - Screen and Route Specs own per-screen user-visible behavior, layout intent, states, and navigation.
-- Technical Design artifacts own implementation architecture and engineering contracts.
-- If artifacts conflict, call out the conflict and prefer updating the upstream product or Design System artifact instead of inventing behavior inside downstream technical work.
+- Technical Design artifacts own architecture choices, code boundaries, integration boundaries, persistence strategy, and engineering constraints.
+- Domain Modeling artifacts own final model contracts: canonical terms, objects, lifecycle states, schema or persistence model details when applicable, state machines, permissions, source-of-truth rules, audit events, invariants, model-level test obligations, and product-level open decisions.
+- If artifacts conflict, call out the conflict and prefer updating the upstream artifact that owns the relevant truth instead of inventing behavior inside downstream work.
 
 ## Artifact Conventions
 
@@ -92,7 +95,6 @@ Default files:
 
 - `specs/SPECIFICATION_PROFILE.md`
 - `specs/user-flows/00_INDEX.md`
-- optionally `specs/domain-model/00_INDEX.md`
 
 Created or materially updated by the [bootstrapper workflow](bootstrapper.md).
 
@@ -144,17 +146,7 @@ Use this structure for new User Flow Specs and preserve it when materially updat
 
 Do not add default `Sources` or `Discovery Notes` sections. Discovery material is input, not the canonical artifact.
 
-### 2. Domain and State Model
-
-Default folder: `specs/domain-model/`
-
-Created or materially updated by the [domain-model orchestrator workflow](domain-model-orchestrator.md).
-
-The Domain and State Model turns user flows into shared product contracts for implementation agents: glossary, product objects, state machines, actions and side effects, roles and permissions, invariants, source-of-truth rules, audit events, open decisions, and flow traceability.
-
-Use it as the canonical source for cross-flow product behavior once it exists.
-
-### 3. Design System
+### 2. Design System
 
 Suggested folder: `specs/design-system/`
 
@@ -164,11 +156,11 @@ This stage defines how the app should look, feel, and behave. It is not decorati
 
 Primary input comes from a planmaxxing-style interview where the user explains design preferences one decision at a time. Optional UI screenshots can ground concrete patterns such as tables, forms, pages, navigation, cards, filters, modals, empty states, and dashboards.
 
-### 4. Screen and Route Specs
+### 3. Screen and Route Specs
 
 Suggested folder: `specs/screens-and-routes/`
 
-Screen and Route Specs translate flows, domain contracts, and Design System guidance into implementable app surfaces.
+Screen and Route Specs translate flows and Design System guidance into implementable app surfaces.
 
 Expected coverage:
 
@@ -184,18 +176,18 @@ Expected coverage:
 - responsive expectations
 - screenshots or app evidence when useful
 
-### 5. Technical Design
+### 4. Technical Design
 
 Suggested folder: `specs/technical-design/`
 
 Created or materially updated by the [technical-design orchestrator workflow](technical-design-orchestrator.md).
 
-Technical Design explains how implementation should satisfy product, domain, Design System, and screen contracts.
+Technical Design explains which architecture and engineering constraints should satisfy the product, Design System, and screen contracts.
 
 Expected coverage:
 
 - app architecture and major boundaries
-- data persistence strategy
+- data persistence strategy and selected persistence technologies
 - server/client/API boundaries
 - authentication, authorization, and session handling
 - background jobs, reminders, notifications, and retries
@@ -207,26 +199,25 @@ Expected coverage:
 
 Technical Design should consume earlier specs. It should not silently redefine product behavior, Design System guidance, or screen requirements.
 
-### 6. Implementation Slices
+Technical Design may choose SQL, an FSM library, event sourcing, or another modeling approach. It should not fully elaborate the resulting schema, state machine, or model test plan when those details belong in the final Domain Modeling stage.
 
-Suggested folder: `specs/implementation-slices/`
+### 5. Domain Modeling
 
-Created or materially updated by the [implementation-slice orchestrator workflow](implementation-slice-orchestrator.md).
+Default folder: `specs/domain-model/`
 
-Implementation slices are vertical build plans for coding agents. They group the minimum product, UI, domain, and technical context needed to implement and test one meaningful increment.
+Created or materially updated by the [domain-model orchestrator workflow](domain-model-orchestrator.md).
 
-Expected coverage:
+Domain Modeling is the final specification stage. It consolidates user flows, Design System implications, screen behavior, and Technical Design choices into precise model contracts that implementation agents can follow.
 
-- slice outcome
-- source specs to read
-- included routes, actions, states, and roles
-- excluded scope
-- acceptance criteria
-- seed data or fixtures needed
-- testing expectations
-- known open decisions or blocked assumptions
+This stage includes the classic product-domain model: glossary, product objects, lifecycle states, actions and side effects, roles and permissions, invariants, source-of-truth rules, audit events, open decisions, and flow traceability.
 
-Prefer vertical slices over broad feature buckets.
+It also expands technical modeling choices made in Technical Design:
+
+- If Technical Design chooses SQL, Domain Modeling should include a schema design artifact with tables, columns, relationships, constraints, indexes, migrations or seed-data expectations, and source-of-truth notes.
+- If Technical Design chooses FSMs, XState, or another state-machine approach, Domain Modeling should include elaborate state-machine artifacts with states, events, guards, actions, side effects, persistence boundaries, and a model-level test plan.
+- If Technical Design chooses event sourcing, Domain Modeling should include event vocabulary, aggregate boundaries, replay rules, projection ownership, and test scenarios.
+
+Domain Modeling should not choose the architecture on its own. If the needed modeling substrate is unknown, update Technical Design first or record an explicit open decision.
 
 ## Stage Status Language
 
@@ -239,21 +230,23 @@ Use simple status language in index files when useful:
 
 ## Reading Order for Coding Agents
 
-For implementation work, prefer this context order:
+For downstream implementation work, prefer this context order:
 
-1. The relevant implementation slice, if present.
-2. Relevant Screen and Route Specs.
-3. Design System artifacts for interaction and visual decisions.
-4. Domain and State Model artifacts for shared product behavior.
+1. Relevant Domain Modeling artifacts for final model contracts.
+2. Relevant Technical Design artifacts for architecture and engineering constraints.
+3. Relevant Screen and Route Specs for user-visible surfaces.
+4. Design System artifacts for interaction and visual decisions.
 5. Relevant User Flow Specs for workflow intent.
 6. App code and current app behavior as implementation evidence.
 7. Product discovery only when the specification set is silent or the user asks for deeper expectation mining.
 
 ## Open Questions and Open Decisions
 
-During early flow drafting, User Flow Specs may contain `## Open Questions`.
+During early flow or screen drafting, artifacts may contain local `## Open Questions`.
 
-Once a Domain and State Model exists, product-level questions should be centralized in the domain model's open decisions artifact. Product-level questions include ambiguity about shared terminology, domain objects, lifecycle states, state transitions, role permissions, sensitive gates, source-of-truth boundaries, audit requirements, artifact ownership, notification side effects, deadlines, reminders, settings governance, or behavior that affects multiple flows.
+Once Domain Modeling exists, product-level and model-level questions should be centralized in the domain model's open decisions artifact. Product-level questions include ambiguity about shared terminology, domain objects, lifecycle states, state transitions, role permissions, sensitive gates, source-of-truth boundaries, audit requirements, artifact ownership, notification side effects, deadlines, reminders, settings governance, or behavior that affects multiple flows.
+
+Model-level questions include unresolved schema ownership, persistence representation, state-machine event shape, guard semantics, derived-data refresh rules, audit metadata, and model test coverage.
 
 After product-level questions have been centralized, affected User Flow Specs should point to the centralized artifact. When no flow-local questions remain, use:
 

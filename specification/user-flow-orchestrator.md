@@ -22,16 +22,16 @@ From the user's request, identify the flow number, flow name, and target file.
 1. Read the specification profile, if present.
 2. Inspect the user-flow index.
 3. Inspect neighboring or related User Flow Specs.
-4. If a Domain and State Model exists, inspect relevant artifacts before making material cross-flow claims.
+4. If Domain Modeling artifacts exist, inspect relevant artifacts before making material cross-flow claims.
 5. Read only relevant discovery material.
 6. Inspect prototype code, mock data, and screenshots when they clarify visible behavior.
 7. Use browser evidence when the profile, task, or change risk calls for it.
 
 Discovery material is input, not canonical truth. The prototype is useful evidence, but may be incomplete, inconsistent, or misleading.
 
-When the Domain and State Model exists, treat it as the canonical source for shared terminology, domain objects, lifecycle states, role permissions, source-of-truth rules, audit event vocabulary, and centralized product-level open decisions. User Flow Specs still own workflow-specific start conditions, user actions, system responses, prototype observations, and flow-local edge cases.
+When Domain Modeling exists, treat it as the canonical source for shared terminology, domain objects, lifecycle states, role permissions, source-of-truth rules, audit event vocabulary, and centralized product-level open decisions. User Flow Specs still own workflow-specific start conditions, user actions, system responses, prototype observations, and flow-local edge cases.
 
-If a relevant User Flow Spec and Domain and State Model artifact conflict, do not silently choose one. Reconcile conservatively when the user's requested scope permits, or call out the conflict and add or update a product-level open decision.
+If a relevant User Flow Spec and Domain Modeling artifact conflict, do not silently choose one. Reconcile conservatively when the user's requested scope permits, or call out the conflict and add or update a product-level open decision.
 
 ## Precision Bias
 
@@ -94,9 +94,9 @@ Require this report shape:
 
 The report must separate "code suggests this exists" from "browser confirmed this behavior."
 
-## Domain Model Awareness
+## Domain Modeling Awareness
 
-Before drafting a new or materially updated User Flow Spec, check whether a Domain and State Model exists.
+Before drafting a new or materially updated User Flow Spec, check whether Domain Modeling artifacts exist.
 
 If it does not exist:
 
@@ -155,7 +155,7 @@ Include:
 
 - flow boundary, outcome, start, end, and excluded scope
 - source inventory
-- relevant domain model artifacts consulted, if any
+- relevant Domain Modeling artifacts consulted, if any
 - prototype facts and screenshot paths
 - product contract inventory:
   - readiness gates and blockers
@@ -170,7 +170,7 @@ Include:
 - conservative decisions
 - required spec obligations
 - screenshot plan
-- domain-model updates or open-decision updates needed, if any
+- Domain Modeling updates or open-decision updates needed, if any
 
 Use the ledger to draft the spec, but do not paste it into the spec.
 
@@ -182,14 +182,14 @@ Keep the spec flow-centered, outcome-grounded, and user-visible. Do not turn it 
 
 Update the user-flow index when adding a new flow.
 
-If the Domain and State Model exists and the flow has no flow-local open questions, use this `## Open Questions` wording:
+If Domain Modeling exists and the flow has no flow-local open questions, use this `## Open Questions` wording:
 
 ```md
 Product-level open decisions are tracked in [09_OPEN_DECISIONS.md](../domain-model/09_OPEN_DECISIONS.md).
 This flow has no remaining flow-local open questions.
 ```
 
-If the Domain and State Model exists and the flow introduces or resolves shared product behavior, update the relevant domain artifact or flow-to-domain traceability in the same change when the user's scope permits.
+If Domain Modeling exists and the flow introduces or resolves shared product behavior, update the relevant domain artifact or flow-to-domain traceability in the same change when the user's scope permits.
 
 Reference screenshots only when they clarify the flow.
 
@@ -201,7 +201,7 @@ Check:
 
 - template compliance
 - scope conflicts with neighboring specs
-- consistency with relevant Domain and State Model artifacts, if present
+- consistency with relevant Domain Modeling artifacts, if present
 - unsupported product claims
 - missing edge cases or business rules
 - lost precision compared with the ledger, explorer report, discovery evidence, or neighboring specs
@@ -211,7 +211,7 @@ Check:
 - prototype observations mixed with intended behavior
 - screenshot reference correctness
 - index update correctness
-- centralized open-decision handling when a Domain and State Model exists
+- centralized open-decision handling when Domain Modeling exists
 - flow-to-domain traceability update correctness when applicable
 
 Apply only concrete, grounded fixes. Prefer restoring product precision over shortening the spec. Make length serve the flow rather than an implicit target.
@@ -221,7 +221,7 @@ Apply only concrete, grounded fixes. Prefer restoring product precision over sho
 Summarize:
 
 - spec files changed
-- domain model files changed, if any
+- Domain Modeling files changed, if any
 - whether browser exploration was used
 - screenshots created or updated
 - small prototype fixes, if any

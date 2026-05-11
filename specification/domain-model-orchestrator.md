@@ -1,10 +1,10 @@
-# Domain Model Orchestrator
+# Domain Modeling Orchestrator
 
-Use this workflow to create or materially update Domain and State Model artifacts for an app specification system.
+Use this workflow to create or materially update Domain Modeling artifacts for an app specification system.
 
-The Domain and State Model is the shared product contract that implementation agents consume after User Flow Specs exist. It defines product nouns, states, transitions, permissions, side effects, invariants, source-of-truth boundaries, audit events, and centralized product-level open decisions.
+Domain Modeling is the final specification stage. It consolidates user flows, screen behavior, design implications, and Technical Design choices into precise model contracts for implementation agents. It defines product nouns, objects, states, transitions, permissions, side effects, invariants, source-of-truth boundaries, audit events, schema or persistence-model details when applicable, state-machine designs when applicable, model-level test obligations, and centralized open decisions.
 
-It is not a database schema, API design, technical architecture, or Design System spec.
+It is not a generic PRD, UI spec, technical architecture chooser, task ticket list, vertical implementation plan, ORM implementation, or code-generation runbook.
 
 ## Specification Profile
 
@@ -16,20 +16,23 @@ Use the profile for product name, spec roots, discovery inputs, prototype URL, s
 
 From the user's request, identify whether the task is:
 
-- create the full Domain and State Model artifact set
+- create the full Domain Modeling artifact set
 - update one named domain artifact
-- resolve or add product-level open decisions
-- reconcile a domain-model conflict caused by a user-flow update
+- elaborate a Technical Design choice into a schema, state-machine, event, or persistence model artifact
+- resolve or add product-level or model-level open decisions
+- reconcile a domain-model conflict caused by a user-flow, screen, or technical-design update
 - update flow-to-domain traceability
 - migrate User Flow Spec `Open Questions` into the domain model
 
-If the request names a specific artifact, focus on that artifact and update the minimum affected set. If the request asks for implementation readiness, state modeling, shared terminology, permissions, source of truth, audit behavior, or product-level open questions without naming an artifact, inspect the full domain model set and perform the smallest useful domain-model update.
+If the request names a specific artifact, focus on that artifact and update the minimum affected set. If the request asks for handoff readiness, state modeling, schema design, shared terminology, permissions, source of truth, audit behavior, or product-level open questions without naming an artifact, inspect the full domain model set and perform the smallest useful domain-modeling update.
 
 If the target cannot be confidently matched to a domain artifact or cross-flow concern, ask one concise clarification question before continuing.
 
 ## Expected Artifact Set
 
 Default folder: `specs/domain-model/`
+
+Core artifacts:
 
 - `00_INDEX.md`
 - `01_GLOSSARY.md`
@@ -43,36 +46,57 @@ Default folder: `specs/domain-model/`
 - `09_OPEN_DECISIONS.md`
 - `10_FLOW_TO_DOMAIN_TRACEABILITY.md`
 
+Conditional modeling artifacts should be added when Technical Design makes them relevant:
+
+- `11_SCHEMA_DESIGN.md` for SQL, relational persistence, or schema-heavy data modeling
+- `12_STATE_MACHINE_DESIGN.md` for FSMs, XState, workflow-state libraries, or complex lifecycle orchestration
+- `13_EVENT_MODEL.md` for event sourcing, audit-event-heavy systems, outbox contracts, or projection models
+- `14_MODEL_TEST_PLAN.md` when model behavior needs focused deterministic verification beyond general app tests
+
 Use this title format:
 
 ```md
-# Domain Model: <Name>
+# Domain Modeling: <Name>
 ```
 
-When creating the full set, create all listed files. When updating one artifact, avoid broad churn in unrelated artifacts unless the product contract would become inconsistent.
+When creating the full set, create the core artifacts and only the conditional artifacts justified by Technical Design or explicit user request. When updating one artifact, avoid broad churn in unrelated artifacts unless the model contract would become inconsistent.
 
 ## Grounding Order
 
 1. Read the specification profile, if present.
 2. Inspect the domain model folder if it exists.
-3. Inspect the user-flow index.
-4. Read current User Flow Specs.
-5. Read relevant discovery material.
-6. Inspect prototype code, mock data, screenshots, or browser behavior only when they clarify product language, states, routes, labels, or conflicts.
+3. Inspect the Technical Design stage for architecture, persistence, state-machine, integration, and testing choices.
+4. Inspect Screen and Route Specs for visible states, actions, data, and navigation behavior.
+5. Inspect the user-flow index and relevant User Flow Specs.
+6. Inspect Design System artifacts only when component states, feedback, density, or microcopy affect model semantics.
+7. Read relevant discovery material.
+8. Inspect prototype code, mock data, screenshots, browser behavior, schema files, or workflow code only when they clarify product language, states, routes, labels, model shape, or conflicts.
 
-User Flow Specs are the strongest source for current workflow understanding. Discovery documents are important input, but may be verbose, stale, technical, or contradictory. Prototype behavior is useful evidence, but it is not automatically authoritative.
+User Flow Specs are the strongest source for current workflow understanding. Technical Design is the source for selected architecture and modeling substrates. Discovery documents are important input, but may be verbose, stale, technical, or contradictory. Prototype behavior is useful evidence, but it is not automatically authoritative.
 
 ## Precision Bias
 
 Optimize for implementation-useful precision.
 
-Use the specification profile's domain precision hints when present. Do not simplify away states, blockers, metadata records, source-of-truth boundaries, validation gates, permissions, or audit requirements that implementation agents would need.
+Use the specification profile's domain precision hints when present. Do not simplify away states, blockers, metadata records, source-of-truth boundaries, validation gates, permissions, audit requirements, schema constraints, state-machine guards, model test obligations, or persistence ownership details that implementation agents would need.
+
+## Technical Design Dependency
+
+Domain Modeling elaborates Technical Design choices; it does not silently invent them.
+
+Examples:
+
+- If Technical Design selects SQL or a relational database, create or update a schema design artifact. Include tables, important columns, relationships, uniqueness constraints, required indexes, history or snapshot rules, migration expectations, seed-data expectations, and source-of-truth boundaries.
+- If Technical Design selects XState, a finite state machine, or similar workflow library, create or update a state-machine design artifact. Include the machine boundary, context shape, states, substates, events, guards, actions, invoked services, side effects, persistence boundaries, error states, terminal states, re-entry rules, and a model-level test plan.
+- If Technical Design selects event sourcing or an outbox/event-driven workflow, create or update an event model artifact. Include aggregates or owners, event names, payload obligations, idempotency keys, replay behavior, projection ownership, ordering assumptions, and test scenarios.
+
+If the needed substrate is unclear, update Technical Design first or add a model-level open decision. Do not make the domain artifact both choose and elaborate a major architecture direction.
 
 ## Artifact Guidance
 
 ### 00_INDEX.md
 
-Explain the purpose of the domain model folder, reading order, and relationship to User Flow Specs. Link each artifact.
+Explain the purpose of the domain model folder, reading order, relationship to Technical Design, and relationship to User Flow Specs. Link each artifact.
 
 ### 01_GLOSSARY.md
 
@@ -99,9 +123,11 @@ For each object, include:
 - lifecycle ownership when useful
 - key rules or non-goals
 
+When a schema artifact also exists, link from product objects to the persistence representation instead of mixing table design into the product-object artifact.
+
 ### 03_STATE_MACHINES.md
 
-Define valid states and transitions for relevant domain objects.
+Define valid product states and transitions for relevant domain objects.
 
 For each state machine, include:
 
@@ -112,6 +138,8 @@ For each state machine, include:
 - side effects that belong in `04_ACTIONS_AND_SIDE_EFFECTS.md`
 - terminal states and reopen or loopback rules
 - known open decisions
+
+When an FSM/XState artifact also exists, keep this artifact focused on product semantics and put technical machine structure, context shape, guards, invoked services, and test cases in the state-machine design artifact.
 
 ### 04_ACTIONS_AND_SIDE_EFFECTS.md
 
@@ -147,7 +175,7 @@ Do not invent a custom permission-builder product unless the user explicitly sco
 
 Collect rules that must always hold across implementation.
 
-Focus on cross-flow product obligations, not code architecture or implementation mechanics.
+Focus on cross-flow product and model obligations, not code architecture or implementation tasks.
 
 ### 07_SOURCE_OF_TRUTH_AND_DERIVED_DATA.md
 
@@ -180,7 +208,7 @@ Use stable event names when possible. Do not overfit event naming to code identi
 
 ### 09_OPEN_DECISIONS.md
 
-Centralize product-level unresolved questions.
+Centralize product-level and model-level unresolved questions.
 
 Use stable decision IDs such as `DM-001`, `DM-002`, etc. For each decision, include:
 
@@ -193,7 +221,7 @@ Use stable decision IDs such as `DM-001`, `DM-002`, etc. For each decision, incl
 - conservative default or recommendation, if known
 - owner or needed input, if known
 
-Prefer one clear product decision per item. Do not create vague buckets when separate role, state, source-of-truth, audit, or lifecycle decisions affect different implementation gates.
+Prefer one clear decision per item. Do not create vague buckets when separate role, state, source-of-truth, audit, schema, state-machine, or lifecycle decisions affect different implementation gates.
 
 ### 10_FLOW_TO_DOMAIN_TRACEABILITY.md
 
@@ -208,9 +236,83 @@ For each flow, include:
 - audit events
 - business invariants
 - source-of-truth rules
+- schema or persistence-model artifacts, if relevant
+- technical state-machine artifacts, if relevant
 - open decision IDs
 
-This artifact helps implementation agents load the right context for a vertical build slice.
+This artifact helps implementation agents load the right model context without turning the specification into a build plan.
+
+### 11_SCHEMA_DESIGN.md
+
+Create this artifact when Technical Design chooses SQL, relational persistence, or schema-heavy persistence.
+
+Include:
+
+- selected persistence substrate from Technical Design
+- tables or collections and their responsibilities
+- important columns and data types at specification-level precision
+- primary keys, foreign keys, uniqueness constraints, and nullability rules
+- indexes required by source-of-truth, lookup, reporting, or workflow needs
+- history, snapshots, soft deletion, archival, or versioning rules
+- seed-data and fixture expectations
+- migration or backfill expectations when relevant
+- mapping from tables to product domain objects
+- open decisions that block schema correctness
+
+Do not write ORM code, migrations, generated SQL files, or implementation tasks. Keep it a schema specification.
+
+### 12_STATE_MACHINE_DESIGN.md
+
+Create this artifact when Technical Design chooses FSMs, XState, or another explicit state-machine approach.
+
+Include:
+
+- selected state-machine substrate from Technical Design
+- machine boundaries and ownership
+- context shape and important persisted context fields
+- states, nested states, and terminal states
+- events and payload obligations
+- guards and validation blockers
+- actions, invoked services, effects, and audit hooks
+- persistence and rehydration boundaries
+- retry, cancellation, timeout, and error-state behavior
+- product flows and screens that consume each machine
+- model-level test plan covering valid transitions, blocked transitions, guard behavior, side effects, rehydration, terminal states, and regression examples
+
+Do not write executable machine code unless the user explicitly asks outside the specification workflow.
+
+### 13_EVENT_MODEL.md
+
+Create this artifact when Technical Design chooses event sourcing, an outbox, or event-driven workflow contracts.
+
+Include:
+
+- aggregate or owner boundaries
+- event names and meanings
+- payload obligations and redaction rules
+- idempotency keys and duplicate handling
+- ordering assumptions
+- replay and projection behavior
+- failure and recovery expectations
+- audit and observability links
+- test scenarios
+
+### 14_MODEL_TEST_PLAN.md
+
+Create this artifact when domain logic needs focused deterministic verification across schema, state machines, permissions, or derived data.
+
+Include:
+
+- model behaviors under test
+- fixtures or seed data needed
+- transition and invariant scenarios
+- permission and authorization scenarios
+- schema constraint scenarios
+- derived-data refresh scenarios
+- audit event expectations
+- regression cases tied to open decisions or prior implementation misses
+
+Keep this at the specification level. Do not prescribe exact test framework syntax unless Technical Design locked it.
 
 ## Open Decisions Migration
 
@@ -225,8 +327,9 @@ Do not mine only literal `## Open Questions` sections. Also inspect:
 - source conflicts between neighboring flows
 - discovery-doc conflicts
 - current prototype gaps that affect shared product behavior
+- Technical Design choices that require schema, state-machine, event-model, or test-plan elaboration
 
-Move product-level open questions into the open decisions artifact.
+Move product-level and model-level open questions into the open decisions artifact.
 
 After moving product-level decisions, update each affected User Flow Spec's `## Open Questions` section. Use this wording when no flow-local questions remain:
 
@@ -235,7 +338,7 @@ Product-level open decisions are tracked in [09_OPEN_DECISIONS.md](../domain-mod
 This flow has no remaining flow-local open questions.
 ```
 
-Keep a flow-local question only when it is genuinely narrow to that flow and does not affect shared terminology, states, permissions, source-of-truth rules, audit events, artifacts, deadlines, reminders, or cross-flow behavior.
+Keep a flow-local question only when it is genuinely narrow to that flow and does not affect shared terminology, states, permissions, source-of-truth rules, audit events, artifacts, deadlines, reminders, settings governance, or cross-flow behavior.
 
 ## Decision Loop
 
@@ -249,7 +352,7 @@ Decision questions should be evidence-bound. They should:
 - identify source conflicts
 - recommend conservative interpretations
 - preserve product distinctions implementation agents need
-- avoid inventing unsupported features, roles, states, or integrations
+- avoid inventing unsupported features, roles, states, integrations, schemas, or machine events
 - label adjacent future ideas as follow-ups
 
 Use this internal decision shape:
@@ -267,27 +370,27 @@ Use this internal decision shape:
 Stop the loop when:
 
 1. The artifact boundary is clear.
-2. Shared terms, objects, states, actions, permissions, invariants, source-of-truth rules, audit events, and open decisions are distinguishable.
+2. Shared terms, objects, states, actions, permissions, invariants, source-of-truth rules, audit events, schema details, state-machine details, test obligations, and open decisions are distinguishable.
 3. Major source conflicts have been addressed or captured in open decisions.
-4. More investigation is likely to add detail rather than change the product contract.
+4. More investigation is likely to add detail rather than change the model contract.
 
-If ambiguity blocks a useful product contract, ask the user. If it does not block drafting, make the narrowest conservative assumption and track the unresolved decision.
+If ambiguity blocks a useful product or model contract, ask the user. If it does not block drafting, make the narrowest conservative assumption and track the unresolved decision.
 
 ## Drafting Rules
 
 Use the artifact boundaries above.
 
-Keep writing implementation-facing but product-level. Avoid:
+Keep writing implementation-facing but specification-level. Avoid:
 
-- database schema proposals
-- ORM models
-- API route design
+- ORM models or generated migration files
+- API route implementation
 - component architecture
-- provider or vendor choices
+- provider or vendor choices not already made by Technical Design
 - UI styling rules
-- test implementation details
+- task lists, tickets, vertical slices, or coding sequence plans
+- executable test code
 
-It is acceptable to mention a technical constraint only when it changes user-visible behavior or product obligations.
+It is acceptable to mention a technical constraint when it changes model shape, source-of-truth rules, state-machine behavior, audit obligations, or test expectations.
 
 Preserve user-flow links where useful, but do not create a default `Sources` section in every artifact. Product discovery documents are input material, not canonical product truth.
 
@@ -298,12 +401,12 @@ After drafting, perform a review pass. Consult a high-reasoning reviewer subagen
 Check:
 
 - artifact boundary compliance
-- consistency with User Flow Specs
-- unsupported product claims
-- lost precision around states, gates, metadata, permissions, source-of-truth rules, or audit requirements
+- consistency with User Flow Specs, Screen and Route Specs, and Technical Design
+- unsupported product or model claims
+- lost precision around states, gates, metadata, permissions, source-of-truth rules, audit requirements, schema constraints, state-machine guards, or model tests
 - contradiction between domain artifacts
 - duplicated discovery prose
-- unresolved product questions captured in open decisions
+- unresolved product or model questions captured in open decisions
 - flow `Open Questions` sections updated when product-level decisions were centralized
 - traceability correctness
 
@@ -313,10 +416,10 @@ Apply only concrete, grounded fixes.
 
 Summarize:
 
-- domain model files changed
-- User Flow Specs consulted or updated
-- product-level open decisions added, resolved, or moved
+- domain modeling files changed
+- Technical Design, Screen and Route Specs, or User Flow Specs consulted or updated
+- product-level or model-level open decisions added, resolved, or moved
 - whether browser exploration was used
 - small prototype fixes, if any
 - important source conflicts or conservative decisions
-- recommended next artifact or implementation-readiness follow-up
+- recommended next specification follow-up, usually Consistency Review

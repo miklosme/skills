@@ -16,10 +16,10 @@ From the user's request, identify whether the review targets:
 
 - one artifact
 - one stage folder
-- a flow plus related domain model entries
+- a flow plus related Domain Modeling entries
 - all User Flow Specs
-- the full Domain and State Model
-- implementation-readiness across stages
+- the full Domain Modeling stage
+- handoff-readiness across stages
 - open decisions and traceability
 
 If the target is ambiguous and a broad review would be expensive or noisy, ask one concise clarification question.
@@ -40,8 +40,8 @@ Look for:
 
 - artifact missing from an index or indexed but absent without clear planned status
 - artifact title or folder inconsistent with stage conventions
-- user-flow behavior that conflicts with the Domain and State Model
-- domain model claims not supported by any flow, discovery evidence, prototype evidence, or user decision
+- user-flow behavior that conflicts with Domain Modeling
+- Domain Modeling claims not supported by any flow, screen spec, technical-design choice, discovery evidence, prototype evidence, or user decision
 - product-level open questions stranded inside one flow
 - flow-local questions incorrectly centralized as product-level decisions
 - open decision IDs duplicated, missing, vague, or not traceable to affected artifacts
@@ -49,12 +49,12 @@ Look for:
 - prototype observations written as intended product behavior
 - technical implementation details leaking into product-level artifacts
 - Design System guidance or screen behavior silently redefining domain rules
-- implementation slices missing key source specs, acceptance criteria, roles, states, exclusions, or testing expectations
+- implementation planning artifacts inside the specification set, such as vertical slices, task tickets, or coding sequence plans
 - language that collapses important product distinctions named in the specification profile
 
 ## Review Posture
 
-Prioritize bugs, contradictions, missing gates, unresolved decisions, and implementation risks over style.
+Prioritize bugs, contradictions, missing gates, unresolved decisions, and handoff risks over style.
 
 When sources disagree:
 

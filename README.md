@@ -4,7 +4,7 @@ A collection of agent skills that extend capabilities across planning, developme
 
 ## Skills
 
-- `specification`: shared app specification guidance plus child workflows for bootstrap, User Flow Specs, Domain and State Model artifacts, Design System, and consistency review.
+- `specification`: shared app specification guidance plus child workflows for bootstrap, User Flow Specs, Design System, Technical Design, final Domain Modeling artifacts, and consistency review.
 - `planmaxxing`: relentless one-question-at-a-time planning and design interview.
 
 ## Codex Agents
